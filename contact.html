@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact | Mandapat Jennelle Creatives</title>
+
+    <style>
+
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            color: #333;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: url("logo.jpeg"); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.5; 
+            z-index: -1; 
+        }
+
+      
+        .navbar {
+            background: rgba(51, 51, 51, 0.9);
+            backdrop-filter: blur(5px);
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover, .navbar a.active {
+            color: #ffcc00;
+            font-weight: bold;
+        }
+
+  
+        .card {
+            width: 85%;
+            max-width: 1000px;
+            margin: 60px auto;
+            background: rgba(255, 255, 255, 0.75); 
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 50px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.4); 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        h1 { font-size: 2.5rem; margin-bottom: 30px; }
+
+     
+        .container {
+            display: flex;
+            flex-wrap: wrap; 
+            gap: 40px;
+            text-align: left; 
+        }
+
+        .info, .form {
+            flex: 1;
+            min-width: 300px; 
+        }
+
+        .info h3 { color: #222; margin-top: 0; }
+        .info p { line-height: 1.6; color: #555; }
+
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-sizing: border-box; 
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #ffcc00;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        button {
+            background: #333;
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        button:hover {
+            background: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="contact" class="active">Contact</a>
+</div>
+
+<div class="card">
+    <h1>Contact Me</h1>
+
+    <div class="container">
+        <div class="info">
+            <h3>Get in Touch</h3>
+            <p>If you have questions or would like to collaborate, feel free to send me a message using the form.</p>
+            <p><b>Email:</b> jennelle102816@gmail.com</p>
+            <p><b>Phone:</b> 0975 450 6045</p>
+            <p><b>Location:</b> Lower Ferguson Road, Guisad, Baguio City, Philippines 2600</p>
+        </div>
+
+        <div class="form">
+            <form>
+                <label><b>Name</b></label>
+                <input type="text" placeholder="Enter your name" required>
+
+                <label><b>Email</b></label>
+                <input type="email" placeholder="Enter your email" required>
+
+                <label><b>Subject</b></label>
+                <input type="text" placeholder="Enter subject">
+
+                <label><b>Message</b></label>
+                <textarea rows="5" placeholder="Write your message"></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
