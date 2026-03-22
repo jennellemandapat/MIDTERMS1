@@ -4,191 +4,206 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Mandapat Jennelle Creatives</title>
-
     <style>
         :root {
-            --accent: #ffcc00;
-            --dark: #222;
-            --glass: rgba(255, 255, 255, 0.75);
+            --primary-dark: #222;
+            --accent-color: #ffcc00;
+            --glass-bg: rgba(255, 255, 255, 0.75);
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            text-align: center;
             margin: 0;
             padding: 0;
             min-height: 100vh;
             color: #333;
             display: flex;
             flex-direction: column;
+            align-items: center;
         }
-        
+
         body::before {
             content: "";
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: url("logo.jpeg") no-repeat center center/cover; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("logo.jpeg") no-repeat center center;
+            background-size: cover; 
             opacity: 0.4; 
             z-index: -1; 
         }
 
         .navbar {
-            background: rgba(34, 34, 34, 0.95);
+            background-color: rgba(34, 34, 34, 0.95); 
             backdrop-filter: blur(8px);
-            padding: 20px;
-            text-align: center;
-            position: sticky;
+            padding: 20px 0;
+            position: fixed;
             top: 0;
-            z-index: 100;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
             box-shadow: 0 2px 15px rgba(0,0,0,0.2);
         }
 
         .navbar a {
             color: white;
+            margin: 0 20px;
             text-decoration: none;
-            margin: 0 15px;
-            font-size: 1rem;
+            font-size: 16px;
+            letter-spacing: 1px;
             transition: all 0.3s ease;
-            opacity: 0.8;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
         }
 
         .navbar a:hover, .navbar a.active {
-            color: var(--accent);
-            opacity: 1;
-            font-weight: 600;
+            color: var(--accent-color); 
+            border-bottom: 2px solid var(--accent-color);
         }
 
         .card {
+            background: var(--glass-bg); 
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px);
             width: 90%;
-            max-width: 900px;
-            margin: 60px auto;
-            background: var(--glass); 
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            padding: 40px;
+            max-width: 850px; 
+            margin: 140px auto 60px;
+            padding: 50px 30px;
             border-radius: 24px;
             border: 1px solid rgba(255, 255, 255, 0.4); 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
 
-        h1 { 
-            font-size: 2.2rem; 
-            margin-bottom: 30px; 
-            color: var(--dark);
-            text-align: center;
-        }
-
-        .container {
-            display: flex;
-            flex-wrap: wrap; 
-            gap: 40px;
-        }
-
-        .info, .form-container {
-            flex: 1;
-            min-width: 280px; 
-        }
-
-        .info h3 { color: var(--dark); margin-top: 0; font-size: 1.5rem; }
-        .info p { line-height: 1.8; color: #444; margin: 15px 0; }
-        .info b { color: var(--dark); }
-
-        /* Form Styling */
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--dark);
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 14px;
+        .profile-contact {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
             margin-bottom: 20px;
-            background: rgba(255, 255, 255, 0.6);
-            border: 1px solid rgba(0, 0, 0, 0.1);
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .profile-contact:hover {
+            transform: scale(1.1);
+        }
+
+        h1 { font-size: 2.5rem; margin: 0 0 10px 0; color: var(--primary-dark); }
+        .subtitle { margin-bottom: 40px; color: #555; font-size: 1.1rem; }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            text-align: left;
+        }
+
+        .info-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+        }
+
+        .info-section p {
+            margin: 0 0 25px 0;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .contact-form input, 
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
             border-radius: 12px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        input:focus, textarea:focus {
+            border: 1px solid rgba(0,0,0,0.1);
+            background: rgba(255,255,255,0.5);
+            font-family: inherit;
             outline: none;
-            border-color: var(--accent);
-            background: white;
-            box-shadow: 0 0 0 4px rgba(255, 204, 0, 0.1);
+            transition: 0.3s;
         }
 
-        button {
-            width: 100%; /* Better for mobile */
-            background: var(--dark);
+        .contact-form input:focus, 
+        .contact-form textarea:focus {
+            border-color: var(--accent-color);
+            background: white;
+        }
+
+        .submit-btn {
+            display: inline-block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary-dark);
             color: white;
-            padding: 16px;
+            text-decoration: none;
             border: none;
             border-radius: 50px;
             font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        button:hover {
-            background: #000;
-            transform: translateY(-2px);
+        .submit-btn:hover {
+            background-color: #000;
+            transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
 
         @media (max-width: 600px) {
-            .card { padding: 25px; margin: 30px auto; }
-            .navbar a { margin: 0 8px; font-size: 0.9rem; }
+            .navbar a { margin: 0 10px; font-size: 14px; }
+            .card { padding: 40px 20px; margin-top: 120px; }
+            .profile-contact { width: 110px; height: 110px; }
         }
     </style>
 </head>
-
 <body>
 
-<nav class="navbar">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="contact.html" class="active">Contact</a>
-</nav>
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html" class="active">Contact</a>
+    </nav>
 
-<main class="card">
-    <h1>Get in Touch</h1>
+    <main class="card">
+        <img src="jen pic.png" alt="Jennelle" class="profile-contact">
+        <h1>Connect With Me</h1>
+        <p class="subtitle">Have a question or a project proposal? Send me a message!</p>
 
-    <div class="container">
-        <section class="info">
-            <h3>Contact Details</h3>
-            <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.</p>
-            
-            <p><b>Email:</b> jennelle102816@gmail.com</p>
-            <p><b>Phone:</b> 0975 450 6045</p>
-            <p><b>Location:</b> Lower Ferguson Road, Guisad, Baguio City, Philippines 2600</p>
-        </section>
+        <div class="contact-layout">
+            <div class="info-section">
+                <h3>Email Me</h3>
+                <p>jennellemandapat@example.com</p>
 
-        <section class="form-container">
-            <form action="#">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" placeholder="Name" required>
+                <h3>Location</h3>
+                <p>Easter College<br>Baguio City, Philippines</p>
 
-                <label for="email">Email Address</label>
-                <input type="email" id="email" placeholder="Email" required>
+                <h3>Creative Focus</h3>
+                <p>UI/UX Design, Branding, & Graphic Assets</p>
+            </div>
 
-                <label for="subject">Subject</label>
-                <input type="text" id="subject" placeholder="How can I help?">
-
-                <label for="message">Message</label>
-                <textarea id="message" rows="4" placeholder="Your message here..."></textarea>
-
-                <button type="submit">Send Message</button>
-            </form>
-        </section>
-    </div>
-</main>
+            <div class="contact-form">
+                <form action="#">
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="email" placeholder="Email Address" required>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </main>
 
 </body>
 </html>
