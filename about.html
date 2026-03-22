@@ -3,30 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mandapat Jennelle Creatives</title>
-    <link rel="stylesheet" href="style2.css">
-
+    <title>About | Mandapat Jennelle Creatives</title>
     <style>
         :root {
-            --primary-dark: #222;
-            --accent-color: #ffcc00;
-            --glass-bg: rgba(255, 255, 255, 0.75);
+            --accent: #ffcc00;
+            --dark: #222;
+            --glass: rgba(255, 255, 255, 0.75);
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            font-family: 'Segoe UI', Tahoma, Verdana, sans-serif; 
             text-align: center;
             margin: 0;
             padding: 0;
             min-height: 100vh;
             color: #333;
-            background: #f4f4f4; /* Fallback color */
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
         }
 
-        /* Improved Background Handling */
         body::before {
             content: "";
             position: fixed;
@@ -40,126 +40,146 @@
         }
 
         .navbar {
-            background-color: rgba(34, 34, 34, 0.98); 
-            padding: 15px 0;
+            background-color: rgba(34, 34, 34, 0.95); 
+            backdrop-filter: blur(8px);
+            padding: 20px 0;
             position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
             z-index: 1000;
             display: flex;
             justify-content: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.2);
         }
 
         .navbar a {
             color: white;
-            margin: 0 15px;
+            margin: 0 20px;
             text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            transition: color 0.3s ease;
+            font-size: 16px;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
         }
 
-        .navbar a:hover {
-            color: var(--accent-color); 
+        .navbar a:hover, .navbar a.active {
+            color: var(--accent);
+            border-bottom: 2px solid var(--accent);
+            font-weight: 600;
         }
 
-        /* Improved Card Responsiveness */
         .card {
-            background: var(--glass-bg); 
+            background: var(--glass); 
             backdrop-filter: blur(12px); 
             -webkit-backdrop-filter: blur(12px);
             width: 90%;
-            max-width: 600px; /* Slimmer card looks more professional */
-            margin: 100px 20px 40px; /* Space for fixed navbar */
-            padding: 40px 30px;
+            max-width: 800px;
+            margin: 140px auto 60px;
+            padding: 50px 30px;
             border-radius: 24px;
             border: 1px solid rgba(255, 255, 255, 0.4); 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .profile {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 4px solid white;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            margin-bottom: 20px;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-
-        .card:hover .profile {
-            transform: scale(1.05);
+            box-shadow: 0px 15px 35px rgba(0,0,0,0.1);
         }
 
         .card h1 {
-            font-size: 2.2rem;
-            margin: 0 0 10px 0;
-            color: var(--primary-dark);
-            letter-spacing: -0.5px;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
         }
 
         .card p {
             line-height: 1.8;
             color: #444;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0 auto 20px auto;
+            text-align: justify;
+        }
+
+        .profile-small {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid white;
             margin-bottom: 20px;
+            object-fit: cover;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        .button {
-            display: inline-block;
-            padding: 12px 35px;
-            background-color: var(--primary-dark);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px; 
-            margin-top: 15px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            letter-spacing: 1.2px;
-            transition: all 0.3s ease;
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
         }
 
-        .button:hover {
-            background-color: #000;
-            transform: translateY(-2px); 
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        .stat-box {
+            background: rgba(255,255,255,0.4);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
-        /* Mobile Tweaks */
-        @media (max-width: 480px) {
-            .navbar a { margin: 0 10px; font-size: 0.85rem; }
-            .card h1 { font-size: 1.8rem; }
-            .profile { width: 120px; height: 120px; }
+        .stat-box h3 {
+            margin: 0;
+            color: var(--dark);
+            font-size: 1.2rem;
+        }
+
+        .stat-box p {
+            margin: 5px 0 0;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .navbar a { margin: 0 10px; font-size: 14px; }
+            .card { padding: 40px 20px; }
         }
     </style>
 </head>
+
 <body>
 
-    <nav class="navbar">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="contact.html">Contact</a>
-    </nav>
+<nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="about.html" class="active">About</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="contact.html">Contact</a>
+</nav>
 
-    <main class="card">
-        <img src="jen pic.png" alt="Jennelle Mandapat Portrait" class="profile">
+<main class="card">
+    <img src="jen pic.png" alt="Jennelle" class="profile-small">
+    <h1>About Me</h1>
+    
+    <p>
+        I am a dedicated student at Easter College, currently exploring the intersection of business and technology. 
+        My journey in creative design is driven by a passion for creating visual identities that resonate with people.
+    </p>
 
-        <h1>Jennelle Mandapat</h1>
+    <p>
+        From developing branding for retail projects like "Vaprix" to mastering front-end development, I focus on 
+        blending "street style" aesthetics with technical precision. I believe that good design should not only 
+        look great but also provide a seamless user experience.
+    </p>
 
-        <p>
-            Welcome to my creative portfolio. This project explores modern front-end techniques, combining <strong>Glassmorphism</strong> with clean, user-focused design.
-        </p>
-
-        <p>
-            I'm passionate about building digital experiences that are as functional as they are beautiful.
-        </p>
-
-        <a class="button" href="gallery.html">Explore Portfolio</a>
-    </main>
+    <div class="stats-grid">
+        <div class="stat-box">
+            <h3>Education</h3>
+            <p>Easter College</p>
+        </div>
+        <div class="stat-box">
+            <h3>Focus</h3>
+            <p>Web & Graphic Design</p>
+        </div>
+        <div class="stat-box">
+            <h3>Location</h3>
+            <p>Baguio City, PH</p>
+        </div>
+    </div>
+</main>
 
 </body>
 </html>
