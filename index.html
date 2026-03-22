@@ -1,160 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mandapat Jennelle Creatives</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Mandapat Jennelle Creatives</title>
+    
+    <style>
+        :root {
+            --primary-dark: #222;
+            --accent-color: #ffcc00;
+            --glass-bg: rgba(255, 255, 255, 0.75);
+        }
 
-<style>
-body {
-    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif; 
-    text-align: center; 
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    color: #333;
-    position: relative;
-    overflow-x: hidden;
-}
+        * {
+            box-sizing: border-box;
+        }
 
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url("logo.jpeg"); 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity: 0.5; 
-    z-index: -1; 
-}
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
 
-.navbar {
-    background-color: rgba(51, 51, 51, 0.95); 
-    padding: 20px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    display: flex;
-    justify-content: center; 
-    flex-wrap: wrap;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-}
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("logo.jpeg") no-repeat center center/cover; 
+            opacity: 0.4; 
+            z-index: -1; 
+        }
 
-.navbar a {
-    color: white;
-    margin: 5px 20px;
-    text-decoration: none;
-    font-size: 16px;
-    letter-spacing: 1px;
-    transition: color 0.3s ease;
-}
+        .navbar {
+            background-color: rgba(34, 34, 34, 0.95); 
+            backdrop-filter: blur(8px);
+            padding: 20px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+        }
 
-.navbar a:hover {
-    color: #ffcc00; 
-}
+        .navbar a {
+            color: white;
+            margin: 0 20px;
+            text-decoration: none;
+            font-size: 16px;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent; /* Prevents "dancing" effect */
+        }
 
-.card {
-    background: rgba(255, 255, 255, 0.8); 
-    backdrop-filter: blur(10px); 
-    -webkit-backdrop-filter: blur(10px);
-    width: 85%;
-    max-width: 800px;
-    margin: 140px auto;
-    padding: 50px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.3); 
-    box-shadow: 0px 15px 35px rgba(0,0,0,0.1);
-    position: relative; 
-}
+        /* Highlight Logic */
+        .navbar a:hover, .navbar a.active {
+            color: var(--accent-color); 
+            border-bottom: 2px solid var(--accent-color);
+        }
 
-.card h1 {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-    color: #222;
-}
+        .card {
+            background: var(--glass-bg); 
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px);
+            width: 90%;
+            max-width: 600px; 
+            margin: 140px auto 60px; /* Matched top margin to other pages */
+            padding: 50px 30px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.4); 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
 
-.card p {
-    line-height: 1.6;
-    color: #555;
-    font-size: 1.1rem;
-    max-width: 600px;
-    margin: 0 auto 20px auto; 
-}
+        .profile {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            margin-bottom: 20px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
 
-.gallery {
-    display: flex;
-    justify-content: center; 
-    align-items: center;
-    flex-wrap: wrap;
-    margin-top: 20px;
-}
+        .card:hover .profile {
+            transform: scale(1.05);
+        }
 
-.gallery img {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    border: 5px solid white;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    margin: 15px;
-    object-fit: cover;
-    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
+        .card h1 {
+            font-size: 2.5rem;
+            margin: 0 0 15px 0;
+            color: var(--primary-dark);
+        }
 
-.gallery img:hover {
-    transform: scale(1.1) rotate(2deg); 
-}
+        .card p {
+            line-height: 1.8;
+            color: #444;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
 
-.button {
-    display: inline-block;
-    padding: 14px 40px;
-    background-color: #333;
-    color: white;
-    text-decoration: none;
-    border-radius: 30px; 
-    margin-top: 20px;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
+        .button {
+            display: inline-block;
+            padding: 14px 40px;
+            background-color: var(--primary-dark);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px; 
+            margin-top: 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1.2px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
 
-.button:hover {
-    background-color: #000;
-    transform: translateY(-3px); 
-    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-}
-</style>
+        .button:hover {
+            background-color: #000;
+            transform: translateY(-3px); 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 600px) {
+            .navbar a { margin: 0 10px; font-size: 14px; }
+            .card { padding: 40px 20px; margin-top: 120px; }
+            .profile { width: 130px; height: 130px; }
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="navbar">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="contact.html">Contact</a>
-</div>
+    <nav class="navbar">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+    </nav>
 
-<div class="card">
-    <h1>Jennelle Mandapat</h1>
-    <p>Creativity meets technical precision. Welcome to my personal design showcase.</p>
+    <main class="card">
+        <img src="jen pic.png" alt="Jennelle Mandapat Portrait" class="profile">
 
-    <div class="gallery">
-        <img src="jen pic.png" alt="Jennelle creative work">
-        <img src="jen pic.png" alt="Jennelle creative work">
-        <img src="jen pic.png" alt="Jennelle creative work">
-    </div>
+        <h1>Jennelle Mandapat</h1>
 
-    <a class="button" href="gallery.html">Explore Portfolio</a>
-</div>
+        <p>
+            Welcome to my creative portfolio. This project explores modern front-end techniques, combining <strong>Glassmorphism</strong> with clean, user-focused design.
+        </p>
+
+        <p>
+            I'm passionate about building digital experiences that are as functional as they are beautiful.
+        </p>
+
+        <a class="button" href="gallery.html">Explore Portfolio</a>
+    </main>
 
 </body>
 </html>
