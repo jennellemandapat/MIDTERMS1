@@ -1,158 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mandapat Jennelle Creatives</title>
-<link rel="stylesheet" href="style2.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mandapat Jennelle Creatives</title>
+    <link rel="stylesheet" href="style2.css">
 
-<style>
-body {
-    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif; 
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    color: #333;
-    position: relative;
-    overflow-x: hidden; 
-}
+    <style>
+        :root {
+            --primary-dark: #222;
+            --accent-color: #ffcc00;
+            --glass-bg: rgba(255, 255, 255, 0.75);
+        }
 
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url("logo.jpeg"); 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity: 0.5; 
-    z-index: -1; 
-}
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            color: #333;
+            background: #f4f4f4; /* Fallback color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-.navbar {
-    background-color: rgba(51, 51, 51, 0.95); 
-    padding: 20px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-}
+        /* Improved Background Handling */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("logo.jpeg") no-repeat center center/cover; 
+            opacity: 0.4; 
+            z-index: -1; 
+        }
 
-.navbar a {
-    color: white;
-    margin: 0 20px;
-    text-decoration: none;
-    font-size: 16px;
-    letter-spacing: 1px;
-    transition: color 0.3s ease;
-}
+        .navbar {
+            background-color: rgba(34, 34, 34, 0.98); 
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
 
-.navbar a:hover {
-    color: #ffcc00; 
-}
+        .navbar a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
 
-.card {
-    background: rgba(255, 255, 255, 0.8); 
-    backdrop-filter: blur(10px); 
-    -webkit-backdrop-filter: blur(10px);
-    width: 85%;
-    max-width: 800px;
-    margin: 140px auto;
-    padding: 50px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.3); 
-    box-shadow: 0px 15px 35px rgba(0,0,0,0.1);
-    position: relative; 
-}
+        .navbar a:hover {
+            color: var(--accent-color); 
+        }
 
-.card h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    color: #222;
-}
+        /* Improved Card Responsiveness */
+        .card {
+            background: var(--glass-bg); 
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px);
+            width: 90%;
+            max-width: 600px; /* Slimmer card looks more professional */
+            margin: 100px 20px 40px; /* Space for fixed navbar */
+            padding: 40px 30px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.4); 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
 
-.card p {
-    line-height: 1.6;
-    color: #555;
-    font-size: 1.1rem;
-    margin-bottom: 20px;
-}
+        .profile {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            margin-bottom: 20px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
 
-.profile, .gallery img {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    border: 5px solid white;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    margin: 15px;
-    object-fit: cover;
-    display: inline-block;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
+        .card:hover .profile {
+            transform: scale(1.05);
+        }
 
-.profile:hover, .gallery img:hover {
-    transform: scale(1.1) rotate(2deg); 
-}
+        .card h1 {
+            font-size: 2.2rem;
+            margin: 0 0 10px 0;
+            color: var(--primary-dark);
+            letter-spacing: -0.5px;
+        }
 
-.button {
-    display: inline-block;
-    padding: 14px 30px;
-    background-color: #333;
-    color: white;
-    text-decoration: none;
-    border-radius: 30px; 
-    margin-top: 30px;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
+        .card p {
+            line-height: 1.8;
+            color: #444;
+            font-size: 1.05rem;
+            margin-bottom: 20px;
+        }
 
-.button:hover {
-    background-color: #000;
-    transform: translateY(-3px); 
-    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-}
-</style>
-</head>
-
-<body>
-
-<div class="navbar">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="contact.html">Contact</a>
-</div>
-
-<div class="card">
-    <img src="jen pic.png" alt="Jennelle" class="profile">
-
-    <h1>Jennelle Mandapat</h1>
-
-    <p>
-        Welcome to my creative portfolio webpage. This design showcases my progress 
-        in front-end development, featuring modern Glassmorphism, interactive 
-        hover effects, and clean typography.
-    </p>
-
-    <p>
-        I enjoy exploring web design because it allows me to be creative and productive!
-    </p>
-
-    <a class="button" href="#">Explore Portfolio</a>
-</div>
-
-</body>
-</html>
+        .button {
+            display: inline-
